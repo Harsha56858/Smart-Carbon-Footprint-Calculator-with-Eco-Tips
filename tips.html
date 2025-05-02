@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Eco Tips</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    .eco-tips-container {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .eco-tip {
+      margin: 20px 0;
+      font-size: 1.2em;
+      color: #2e7d32;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="eco-tips-container">
+  <h2>🌿 AI Eco Tips</h2>
+  <p class="eco-tip" id="ecoTip">Click the button to get a green living tip!</p>
+  <button onclick="getEcoTip()">Get AI Tip</button>
+</div>
+
+<script>
+  async function getEcoTip() {
+    const response = await fetch('/api/eco-tip');
+    const data = await response.json();
+    document.getElementById('ecoTip').textContent = data.tip;
+  }
+</script>
+
+</body>
+</html>
